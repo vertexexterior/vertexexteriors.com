@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vertex Exteriors | Pressure Washing & Window Cleaning — Idaho Falls</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #051a2e;
+  --blue: #0e90d4;
+  --cyan: #20b2ff;
+  --cyan-pale: #e0f6ff;
+  --white: #ffffff;
+  --gray-bg: #f4f8fc;
+  --gray-text: #5a6a7a;
+  --text: #0d1f33;
+  --border: #d0e4f0;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(5, 26, 46, 0.97);
+  padding: 16px 32px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.nav-logo { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--white); }
+.nav-logo span { color: var(--cyan); }
+.nav-links { display: flex; gap: 24px; }
+.nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 14px; }
+.nav-links a:hover { color: #fff; }
+.nav-cta {
+  background: var(--cyan); color: var(--navy);
+  font-size: 14px; font-weight: 500;
+  padding: 10px 20px; border-radius: 8px; text-decoration: none;
+}
+.nav-cta:hover { background: #10c8ff; }
+
+/* HERO */
+.hero {
+  min-height: 100vh; background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 120px 24px 100px;
+  position: relative; overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(32,178,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(32,178,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-glow {
+  position: absolute; top: 20%; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(32,178,255,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-content { position: relative; max-width: 700px; }
+.hero-badge {
+  display: inline-block;
+  background: rgba(32,178,255,0.1); border: 1px solid rgba(32,178,255,0.3);
+  color: var(--cyan); font-size: 13px; font-weight: 500;
+  padding: 6px 16px; border-radius: 100px; margin-bottom: 28px;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(36px, 6vw, 60px); color: var(--white);
+  line-height: 1.1; margin-bottom: 24px;
+}
+.hero h1 span { color: var(--cyan); }
+.hero p { font-size: 18px; color: rgba(255,255,255,0.72); line-height: 1.7; max-width: 500px; margin: 0 auto 40px; }
+.hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-main {
+  background: var(--cyan); color: var(--navy);
+  font-size: 16px; font-weight: 500;
+  padding: 16px 36px; border-radius: 10px; text-decoration: none;
+  transition: background 0.2s, transform 0.15s; display: inline-block;
+}
+.btn-main:hover { background: #10c8ff; transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent; color: rgba(255,255,255,0.85);
+  font-size: 16px; font-weight: 500;
+  padding: 16px 36px; border-radius: 10px;
+  border: 1.5px solid rgba(255,255,255,0.2); text-decoration: none;
+  transition: border-color 0.2s; display: inline-block;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+.trust-strip {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: rgba(32,178,255,0.06); border-top: 1px solid rgba(32,178,255,0.12);
+  padding: 18px 32px; display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+}
+.trust-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.7); font-size: 13px; }
+.trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); flex-shrink: 0; }
+
+/* SHARED SECTION STYLES */
+section { padding: 88px 24px; }
+.container { max-width: 1000px; margin: 0 auto; }
+.section-tag { font-size: 12px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+.section-title { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 4vw, 40px); color: var(--text); line-height: 1.2; margin-bottom: 16px; }
+.section-sub { font-size: 16px; color: var(--gray-text); line-height: 1.7; max-width: 540px; margin-bottom: 48px; }
+
+/* SERVICES */
+#services { background: var(--gray-bg); }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.service-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 16px; padding: 32px 28px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.service-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(5,26,46,0.08); }
+.service-card.coming { border-style: dashed; border-color: #c8dcea; background: #fafcff; }
+.svc-icon {
+  width: 52px; height: 52px; background: var(--cyan-pale);
+  border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+}
+.svc-icon svg { width: 24px; height: 24px; stroke: var(--blue); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.service-card h3 { font-size: 18px; font-weight: 500; margin-bottom: 10px; }
+.service-card p { font-size: 14px; color: var(--gray-text); line-height: 1.65; }
+.service-card.coming h3 { color: #8a9aaa; }
+
+/* AREAS */
+#areas { background: var(--navy); }
+#areas .section-tag { color: var(--cyan); }
+#areas .section-title { color: var(--white); }
+#areas .section-sub { color: rgba(255,255,255,0.65); }
+.areas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+.area-card {
+  background: rgba(32,178,255,0.07); border: 1px solid rgba(32,178,255,0.15);
+  border-radius: 12px; padding: 20px; text-align: center;
+}
+.area-card strong { display: block; font-size: 16px; font-weight: 500; color: #fff; margin-bottom: 4px; }
+.area-card span { font-size: 12px; color: rgba(255,255,255,0.45); }
+.area-note { margin-top: 28px; text-align: center; font-size: 14px; color: rgba(255,255,255,0.55); }
+.area-note a { color: var(--cyan); text-decoration: none; }
+
+/* ABOUT */
+#about { background: var(--white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.about-stats { background: var(--navy); border-radius: 20px; padding: 48px 36px; text-align: center; }
+.stat-item { margin-bottom: 32px; }
+.stat-item:last-child { margin-bottom: 0; }
+.stat-num { font-family: 'DM Serif Display', serif; font-size: 48px; color: var(--white); line-height: 1; margin-bottom: 6px; }
+.stat-num span { color: var(--cyan); }
+.stat-label { font-size: 13px; color: rgba(255,255,255,0.55); }
+.stat-divider { width: 40px; height: 1px; background: rgba(255,255,255,0.1); margin: 28px auto; }
+.about-text p { font-size: 16px; color: var(--gray-text); line-height: 1.75; margin-bottom: 20px; }
+.badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.badge { background: var(--cyan-pale); color: var(--blue); font-size: 13px; font-weight: 500; padding: 8px 16px; border-radius: 8px; }
+
+/* QUOTE FORM */
+#quote { background: var(--gray-bg); border-top: 1px solid var(--border); }
+.quote-wrap { max-width: 640px; margin: 0 auto; }
+.quote-wrap .section-title, .quote-wrap .section-tag { text-align: center; }
+.quote-wrap .section-sub { text-align: center; margin-left: auto; margin-right: auto; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label { font-size: 13px; font-weight: 500; color: var(--text); }
+.form-group input, .form-group select, .form-group textarea {
+  padding: 12px 16px; border: 1.5px solid var(--border);
+  border-radius: 10px; font-size: 15px; font-family: 'DM Sans', sans-serif;
+  color: var(--text); background: var(--white); outline: none; width: 100%;
+  transition: border-color 0.2s;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--cyan); }
+.form-group textarea { resize: vertical; min-height: 110px; }
+.btn-submit {
+  width: 100%; background: var(--cyan); color: var(--navy);
+  font-size: 17px; font-weight: 500; padding: 18px;
+  border: none; border-radius: 10px; cursor: pointer; margin-top: 8px;
+  font-family: 'DM Sans', sans-serif; transition: background 0.2s, transform 0.15s;
+}
+.btn-submit:hover { background: #10c8ff; transform: translateY(-1px); }
+.form-note { text-align: center; font-size: 13px; color: var(--gray-text); margin-top: 14px; }
+.form-note a { color: var(--blue); }
+
+/* FOOTER */
+footer { background: var(--navy); padding: 48px 24px; text-align: center; }
+.footer-logo { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--white); margin-bottom: 10px; }
+.footer-logo span { color: var(--cyan); }
+.footer-tagline { font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 28px; }
+.footer-links { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 32px; }
+.footer-links a { color: rgba(255,255,255,0.65); font-size: 14px; text-decoration: none; }
+.footer-links a:hover { color: var(--cyan); }
+.footer-bottom { font-size: 12px; color: rgba(255,255,255,0.25); border-top: 1px solid rgba(255,255,255,0.07); padding-top: 24px; }
+
+@media (max-width: 640px) {
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .trust-strip { gap: 20px; padding: 14px; }
+  .about-grid { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-group.full { grid-column: 1; }
+  section { padding: 64px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Vertex <span>Exteriors</span></div>
+  <div style="display:flex;align-items:center;gap:20px;">
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#areas">Service Area</a>
+      <a href="#about">About</a>
+    </div>
+    <a href="#quote" class="nav-cta">Get a free quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Serving Eastern Idaho</div>
+    <h1>Eastern Idaho's <span>Exterior Cleaning</span> Experts</h1>
+    <p>Professional pressure washing and window cleaning for homes and businesses across the Idaho Falls area. Fully insured. Locally owned.</p>
+    <div class="hero-btns">
+      <a href="#quote" class="btn-main">Get a free quote</a>
+      <a href="tel:2080000000" class="btn-ghost">Call us today</a>
+    </div>
+  </div>
+  <div class="trust-strip">
+    <div class="trust-item"><div class="trust-dot"></div>Fully insured</div>
+    <div class="trust-item"><div class="trust-dot"></div>Locally owned</div>
+    <div class="trust-item"><div class="trust-dot"></div>Free estimates</div>
+    <div class="trust-item"><div class="trust-dot"></div>Residential &amp; commercial</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-tag">What we do</div>
+    <div class="section-title">Our services</div>
+    <p class="section-sub">We keep your property looking its best — from driveways to windows, we handle the dirty work so you don't have to.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Pressure washing</h3>
+        <p>Driveways, sidewalks, siding, decks, and fences restored to like-new condition. Perfect for spring cleanups or pre-sale prep. Residential and commercial.</p>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <h3>Window cleaning</h3>
+        <p>Streak-free, crystal-clear windows inside and out. We handle homes and commercial buildings of all sizes with care and attention to detail.</p>
+      </div>
+      <div class="service-card coming">
+        <div class="svc-icon" style="background:#f0f5fa;">
+          <svg viewBox="0 0 24 24" style="stroke:#a0b8c8;"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        </div>
+        <h3>More coming soon</h3>
+        <p>We're growing! Additional exterior services are on the way. Call us to ask about your specific needs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section id="areas">
+  <div class="container">
+    <div class="section-tag">Where we work</div>
+    <div class="section-title">Proudly serving eastern Idaho</div>
+    <p class="section-sub">Based in Idaho Falls, we serve communities across the region. Not sure if we cover your area? Just give us a call.</p>
+    <div class="areas-grid">
+      <div class="area-card"><strong>Idaho Falls</strong><span>Main service area</span></div>
+      <div class="area-card"><strong>Blackfoot</strong><span>Eastern Idaho</span></div>
+      <div class="area-card"><strong>Shelley</strong><span>Eastern Idaho</span></div>
+      <div class="area-card"><strong>Rigby</strong><span>Eastern Idaho</span></div>
+    </div>
+    <p class="area-note">Not on the list? <a href="#quote">Contact us</a> — we may still be able to help.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-stats">
+        <div class="stat-item">
+          <div class="stat-num">100<span>%</span></div>
+          <div class="stat-label">Fully insured</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num" style="font-size:36px;">Local</div>
+          <div class="stat-label">Idaho Falls based</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num" style="font-size:36px;">Free</div>
+          <div class="stat-label">Estimates always</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-tag">Who we are</div>
+        <div class="section-title">Locally owned, community focused</div>
+        <p>Vertex Exteriors is a locally owned and operated exterior cleaning company serving eastern Idaho. We believe your property deserves to look its best — and that great service shouldn't be hard to find.</p>
+        <p>We show up when we say we will, do the job right, and stand behind our work. When you hire us, you're supporting a local business that genuinely cares about the community we live and work in.</p>
+        <div class="badges">
+          <span class="badge">Fully insured</span>
+          <span class="badge">Locally owned</span>
+          <span class="badge">Free estimates</span>
+          <span class="badge">Residential &amp; commercial</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE FORM -->
+<section id="quote">
+  <div class="quote-wrap">
+    <div class="section-tag">Free estimate</div>
+    <div class="section-title">Get your free quote</div>
+    <p class="section-sub">Fill out the form and we'll get back to you fast with honest, straightforward pricing. No pressure, no obligation.</p>
+    <form action="mailto:info@vertexexteriors.com" method="POST" enctype="text/plain">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" placeholder="John Smith" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(208) 000-0000" required>
+        </div>
+        <div class="form-group">
+          <label for="city">Your city</label>
+          <select id="city" name="city">
+            <option value="">Select your city</option>
+            <option>Idaho Falls</option>
+            <option>Blackfoot</option>
+            <option>Shelley</option>
+            <option>Rigby</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="service">Service needed</label>
+          <select id="service" name="service">
+            <option value="">Select a service</option>
+            <option>Pressure washing</option>
+            <option>Window cleaning</option>
+            <option>Both</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="message">Tell us about your project (optional)</label>
+          <textarea id="message" name="message" placeholder="e.g. Driveway, sidewalk, roof, siding, windows — include square footage if known, number of stories, specific areas you want cleaned, or anything else that would help us give you an accurate quote."></textarea>
+        </div>
+      </div>
+      <button type="submit" class="btn-submit">Send my free quote request</button>
+      <p class="form-note">Or call us directly: <a href="tel:2080000000">(208) 000-0000</a> &nbsp;|&nbsp; Mon–Sat, 8am–6pm</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Vertex <span>Exteriors</span></div>
+  <p class="footer-tagline">Eastern Idaho's exterior cleaning experts</p>
+  <div class="footer-links">
+    <a href="tel:2080000000">(208) 000-0000</a>
+    <a href="/cdn-cgi/l/email-protection#c1a8afa7ae81b7a4b3b5a4b9a4b9b5a4b3a8aeb3b2efa2aeac"><span class="__cf_email__" data-cfemail="9af3f4fcf5daecffe8eeffe2ffe2eeffe8f3f5e8e9b4f9f5f7">[email&#160;protected]</span></a>
+    <a href="#quote">Get a free quot
