@@ -395,3 +395,52 @@ footer { background: var(--navy); padding: 48px 24px; text-align: center; }
     <a href="tel:2083603233">(208) 360-3233</a>
     <a href="/cdn-cgi/l/email-protection#c1a8afa7ae81b7a4b3b5a4b9a4b9b5a4b3a8aeb3b2efa2aeac"><span class="__cf_email__" data-cfemail="9af3f4fcf5daecffe8eeffe2ffe2eeffe8f3f5e8e9b4f9f5f7">[email&#160;protected]</span></a>
     <a href="#quote">Get a free quote</a>
+  </div>
+</footer>
+<script>
+(function(){
+  var canvas = document.getElementById('rain-canvas');
+  if(!canvas) return;
+  var ctx = canvas.getContext('2d');
+  function resize(){
+    canvas.width = canvas.parentElement.offsetWidth;
+    canvas.height = canvas.parentElement.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  var drops = [];
+  for(var i=0;i<140;i++){
+    drops.push({
+      x: Math.random()*2000,
+      y: Math.random()*900,
+      len: Math.random()*16+8,
+      speed: Math.random()*4+2,
+      op: Math.random()*0.35+0.08,
+      w: Math.random()*1.2+0.3
+    });
+  }
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    drops.forEach(function(d){
+      ctx.beginPath();
+      ctx.moveTo(d.x, d.y);
+      ctx.lineTo(d.x - d.len*0.15, d.y + d.len);
+      var g = ctx.createLinearGradient(d.x,d.y,d.x,d.y+d.len);
+      g.addColorStop(0,'rgba(32,178,255,0)');
+      g.addColorStop(1,'rgba(32,178,255,'+d.op+')');
+      ctx.strokeStyle = g;
+      ctx.lineWidth = d.w;
+      ctx.stroke();
+      d.y += d.speed;
+      if(d.y > canvas.height+d.len){
+        d.y = -d.len;
+        d.x = Math.random()*canvas.width;
+      }
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+</body>
+</html>
